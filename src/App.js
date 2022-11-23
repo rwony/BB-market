@@ -1,39 +1,25 @@
-import { useState } from 'react'
-import { Button, Navbar, Container, Row, Nav, Col } from 'react-bootstrap'
+import { Routes, Route, Link } from 'react-router-dom'
 
-import ShoesList from './util/shoesList'
+import Navigation from './layouts/Navigation'
+import Home from './pages/Home'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
-import ProductList from './component/ProductList'
 
 function App() {
-  let [shoes, setShoes] = useState(ShoesList)
-
   return (
     <div className="App">
-      <Navbar bg="light" variant="light">
-        <Container>
-          <Navbar.Brand className="logo" href="/">
-            ShowMarket
-          </Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#cart">Cart</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
+      <Navigation />
 
-      <div className="main-bg"></div>
-
-      <Container>
-        <Row>
-          <div className="product-image-group">
-            {shoes.map((shoes) => (
-              <ProductList data={shoes} />
-            ))}
-          </div>
-        </Row>
-      </Container>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<div>ABOUT</div>} />
+        <Route path="/best" element={<div>베스트</div>} />
+        <Route path="/product" element={<div>둘러보기</div>} />
+        <Route path="/chat" element={<div>수다방</div>} />
+        <Route path="/event" element={<div>이벤트</div>} />
+        <Route path="/cart" element={<div>장바구니</div>} />
+      </Routes>
     </div>
   )
 }
