@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Container, Row, Col } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
 
 import ShoesList from '../util/shoesList'
 import Card from '../component/Card'
@@ -14,8 +14,8 @@ const Home = () => {
       <Container>
         <Row>
           <div className="product-image-group">
-            {shoes.map((shoes) => (
-              <Card data={shoes} />
+            {shoes.map((shoes, i) => (
+              <Card data={shoes} key={i} />
             ))}
           </div>
         </Row>
