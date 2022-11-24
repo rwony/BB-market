@@ -1,9 +1,15 @@
 import { Navbar, Container } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Navigation = () => {
+  let navigate = useNavigate()
+
   return (
     <Navbar bg="light" variant="light">
+      <h1 className="visually-hidden" aria-hidden>
+        빵빵마켓
+      </h1>
+
       <Container>
         <Link className="logo" to={'/'}>
           빵빵마켓
