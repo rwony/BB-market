@@ -1,53 +1,47 @@
-@import './styles/_normalize.css';
-@import './styles/_reset.css';
-
-.App {
-  text-align: center;
-}
-
-.logo {
+/* .logo {
+  font-size: 20px;
   font-weight: 500;
   letter-spacing: -0.05em;
-}
+} */
 
-.navbar-nav {
+/* .navbar-nav {
   flex-grow: 1;
   justify-content: flex-end;
-}
+} */
 
-.main-bg {
+/* .main-bg {
   height: 450px;
   background-image: url('./images/bg.png');
   background-size: cover;
   background-position: center;
-}
+} */
 
-.product-image-group {
+/* .product-image-group {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
-}
+} */
 
-.product-image {
+/* .product-image {
   width: 300px;
   height: auto;
   margin-bottom: 50px;
-}
+} */
 
-.product-image img {
+/* .product-image img {
   display: block;
   width: 100%;
-}
+} */
 
-.product-image h4 {
+/* .product-image h4 {
   font-size: 16px;
-}
+} */
 
-.product-image p {
+/* .product-image p {
   font-size: 12px;
   color: #b2b3b9;
-}
-.product-image strong {
+} */
+/* .product-image strong {
   font-size: 14px;
-}
+} */

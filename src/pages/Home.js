@@ -1,23 +1,35 @@
-import { useState } from 'react'
 import { Container, Row } from 'react-bootstrap'
+import styled from 'styled-components'
 
-import ShoesList from '../util/shoesList'
+import MainImage from '../images/bg.png'
 import Card from '../component/Card'
 
-const Home = () => {
-  let [shoes, setShoes] = useState(ShoesList)
+const MainImageDiv = styled.div`
+  height: 450px;
+  background-color: yellow;
+  background-image: url(${MainImage});
+  background-size: cover;
+  background-position: center;
+`
+const ProductImageGroup = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+`
 
+const Home = ({ shoes }) => {
   return (
     <>
-      <div className="main-bg"></div>
+      <MainImageDiv />
 
       <Container>
         <Row>
-          <div className="product-image-group">
+          <ProductImageGroup>
             {shoes.map((shoes, i) => (
               <Card data={shoes} key={i} />
             ))}
-          </div>
+          </ProductImageGroup>
         </Row>
       </Container>
     </>

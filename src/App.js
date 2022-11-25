@@ -1,20 +1,26 @@
+import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import Navigation from './layouts/Navigation'
 import Home from './pages/Home'
 import Detail from './pages/Detail'
 import Event from './pages/Event'
+import ShoesList from './util/shoesList'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './styles/_normalize.css'
+import './styles/_reset.css'
 import './App.css'
 
 function App() {
+  let [shoes, setShoes] = useState(ShoesList)
+
   return (
     <div className="App">
       <Navigation />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home shoes={shoes} />} />
         <Route path="/about" element={<div>ABOUT</div>} />
         <Route path="/best" element={<div>베스트</div>} />
         <Route path="/product" element={<div>둘러보기</div>} />
@@ -30,7 +36,7 @@ function App() {
           ></Route>
         </Route>
         <Route path="/cart" element={<div>장바구니</div>} />
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
         <Route path="/*" element={<div>없는 페이지입니다.</div>} />
       </Routes>
     </div>
