@@ -2,12 +2,21 @@ import { Navbar, Container } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
+import LogoImage from '../images/logo.svg'
+
+const LogoImageTemplete = styled.img`
+  display: block;
+  width: 60px;
+`
 const MenuContainer = styled(Container)`
   overflow-x: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `
 const Logo = styled(Link)`
   flex-shrink: 0;
-  margin-right: 16px;
+  margin-right: 8px;
   font-size: 18px;
   font-weight: 500;
   letter-spacing: -0.05em;
@@ -29,8 +38,10 @@ const Navigation = () => {
       </h1>
 
       <MenuContainer>
-        <Logo to={'/'}>빵빵마켓</Logo>
-        <Menu to={'/about'}>About us</Menu>
+        <Logo to={'/'}>
+          <LogoImageTemplete src={LogoImage} />
+        </Logo>
+        <Menu to={'/about'}>About</Menu>
         <Menu to={'/best'}>베스트</Menu>
         <Menu to={'/product'}>둘러보기</Menu>
         <Menu to={'/chat'}>수다방</Menu>
