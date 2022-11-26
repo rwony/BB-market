@@ -28,7 +28,7 @@ const Card = (props) => {
   const item = props.data
   return (
     <CardDiv sm key={item.id}>
-      <Link to={'/detail'}>
+      <Link to={`/detail/${item.id}`}>
         <CardImage src={item.url} alt={item.title} />
       </Link>
       <Link to={'/detail'}>
