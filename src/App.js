@@ -20,7 +20,7 @@ function App() {
       <Navigation />
 
       <Routes>
-        <Route path="/" element={<Home shoes={shoes} />} />
+        <Route path="/" element={<Home shoes={shoes} setShoes={setShoes} />} />
         <Route path="/about" element={<div>ABOUT</div>} />
         <Route path="/best" element={<div>베스트</div>} />
         <Route path="/product" element={<div>둘러보기</div>} />
