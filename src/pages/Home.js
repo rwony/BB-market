@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Container, Row } from 'react-bootstrap'
 import styled from 'styled-components'
 import axios from 'axios'
@@ -20,6 +21,9 @@ const ProductImageGroup = styled.div`
 `
 
 const Home = ({ shoes, setShoes }) => {
+  const [addButton, setAddButton] = useState(true)
+  const [moreButton, setMoreButton] = useState(1)
+
   return (
     <>
       <MainImageDiv />
@@ -32,25 +36,32 @@ const Home = ({ shoes, setShoes }) => {
             ))}
           </ProductImageGroup>
 
-          <button
-            type="button"
-            onClick={() => {
-              axios
-                .get(
-                  'https://raw.githubusercontent.com/rwony/rwony.github.io/main/BB-market/data2.json'
-                )
-                .then((result) => {
-                  const newData = [...shoes, ...result.data]
-                  console.log(newData)
-                  setShoes(newData)
-                })
-                .catch(() => {
-                  console.log('Failed get data')
-                })
-            }}
-          >
-            더보기
-          </button>
+          {addButton ? (
+            <button
+              type="button"
+              onClick={() => {
+                setMoreButton(moreButton + 1)
+
+                if (moreButton === 2) {
+                  setAddButton(false)
+                }
+
+                axios
+                  .get(
+                    `https://raw.githubusercontent.com/rwony/rwony.github.io/main/BB-market/data${moreButton}.json`
+                  )
+                  .then((result) => {
+                    const newData = [...shoes, ...result.data]
+                    setShoes(newData)
+                  })
+                  .catch(() => {
+                    console.log('Failed get data')
+                  })
+              }}
+            >
+              더보기
+            </button>
+          ) : null}
         </Row>
       </Container>
     </>
