@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Container, Nav, Row } from 'react-bootstrap'
 import styled from 'styled-components'
 
 const GreenButton = styled.button`
@@ -18,8 +18,9 @@ const Detail = ({ shoes }) => {
   const navigate = useNavigate()
   const { id } = useParams()
 
-  let [count, setCount] = useState(0)
-  let [alert, setAlert] = useState(true)
+  const [count, setCount] = useState(0)
+  const [alert, setAlert] = useState(true)
+  const [tab, setTab] = useState(0)
 
   let target = shoes.find((it) => String(it.id) === id)
 
@@ -52,18 +53,60 @@ const Detail = ({ shoes }) => {
           <p>{target.content}</p>
           <p>￦ {target.price.toLocaleString()}</p>
           <button className="btn btn-danger">주문하기</button>
-          <p>{count}</p>
-          <GreenButton
-            onClick={() => {
-              setCount(count + 1)
-            }}
-          >
-            버튼
-          </GreenButton>
         </Col>
+      </Row>
+
+      <Row>
+        <Nav variant="tabs" defaultActiveKey="link-0">
+          <Nav.Item>
+            <Nav.Link
+              onClick={() => {
+                setTab(0)
+              }}
+              eventKey="link-0"
+            >
+              버튼 1
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link
+              onClick={() => {
+                setTab(1)
+              }}
+              eventKey="link-1"
+            >
+              버튼 2
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link
+              onClick={() => {
+                setTab(2)
+              }}
+              eventKey="link-2"
+            >
+              버튼 3
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
+
+        <TabContent tab={tab} />
       </Row>
     </Container>
   )
+}
+
+function TabContent({ tab }) {
+  return [<div>내용1</div>, <div>내용2</div>, <div>내용3</div>][tab]
+  // if (tab === 0) {
+  //   return <div>내용1</div>
+  // }
+  // if (tab === 1) {
+  //   return <div>내용2</div>
+  // }
+  // if (tab === 2) {
+  //   return <div>내용3</div>
+  // }
 }
 
 export default Detail
