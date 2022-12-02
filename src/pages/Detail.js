@@ -2,27 +2,38 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { Col, Container, Nav, Row } from 'react-bootstrap'
-import styled from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 
-const GreenButton = styled.button`
-  background: green;
-  color: #fff;
-  padding: 10px;
-`
 const MainImage = styled.img`
   display: block;
   width: 100%;
+`
+const fadeContent = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transition: opcity .5s;
+  }
+`
+const TabBox = styled.div`
+  ${({ selected }) => {
+    if (selected)
+      return css`
+        animation: ${fadeContent} 0.5s ease-in;
+      `
+  }}
 `
 
 const Detail = ({ shoes }) => {
   const navigate = useNavigate()
   const { id } = useParams()
 
-  const [count, setCount] = useState(0)
   const [alert, setAlert] = useState(true)
   const [tab, setTab] = useState(0)
 
-  let target = shoes.find((it) => String(it.id) === id)
+  const target = shoes.find((it) => String(it.id) === id)
 
   useEffect(() => {
     // mount, update시 코드 실행됨
@@ -90,23 +101,30 @@ const Detail = ({ shoes }) => {
           </Nav.Item>
         </Nav>
 
-        <TabContent tab={tab} />
+        <TabContent tab={tab} setTab={setTab} />
       </Row>
     </Container>
   )
 }
 
 function TabContent({ tab }) {
-  return [<div>내용1</div>, <div>내용2</div>, <div>내용3</div>][tab]
-  // if (tab === 0) {
-  //   return <div>내용1</div>
-  // }
-  // if (tab === 1) {
-  //   return <div>내용2</div>
-  // }
-  // if (tab === 2) {
-  //   return <div>내용3</div>
-  // }
+  const [state, setState] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setState(true)
+    }, 100)
+
+    return () => {
+      setState(false)
+    }
+  }, [tab])
+
+  return (
+    <TabBox selected={state}>
+      {[<div>내용1</div>, <div>내용2</div>, <div>내용3</div>][tab]}
+    </TabBox>
+  )
 }
 
 export default Detail
