@@ -27,7 +27,7 @@ const CardDescStrong = styled.strong`
 const Card = (props) => {
   const item = props.data
   return (
-    <CardDiv sm key={item.id}>
+    <CardDiv sm={4} md={6} key={item.id}>
       <Link to={`/detail/${item.id}`}>
         <CardImage src={item.url} alt={item.title} />
       </Link>
