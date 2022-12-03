@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import Navigation from './layouts/Navigation'
+import Footer from './layouts/Footer'
 import Home from './pages/Home'
 import Detail from './pages/Detail'
 import Event from './pages/Event'
@@ -39,6 +40,8 @@ function App() {
         <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
         <Route path="/*" element={<div>없는 페이지입니다.</div>} />
       </Routes>
+
+      <Footer />
     </div>
   )
 }
