@@ -2,6 +2,8 @@ import { Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+import { getFontColor } from '../util/common'
+
 const CardDiv = styled(Col)`
   width: 300px;
   height: auto;
@@ -17,7 +19,7 @@ const CardTitle = styled.h4`
 `
 const CardDesc = styled.p`
   font-size: 13px;
-  color: #b2b3b9;
+  color: ${getFontColor('gray')};
 `
 const CardDescStrong = styled.strong`
   font-size: 14px;

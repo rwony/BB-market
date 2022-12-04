@@ -1,15 +1,15 @@
 import { Navbar, Container } from 'react-bootstrap'
-import { Link, NavLink, useNavigate, useParams } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
+import { getFontColor } from '../util/common'
 import LogoImage from '../images/logo.svg'
 
 const NavHeight = '60px'
-const purple = '#6c5ce7'
 
 const NavContainer = styled(Navbar)`
   position: sticky;
@@ -47,7 +47,7 @@ const Menu = styled(NavLink)`
   letter-spacing: -0.01em;
 
   &:hover {
-    color: ${purple};
+    color: ${getFontColor('purple')};
     transition: color 0.2s ease-in-out;
   }
 
@@ -56,7 +56,7 @@ const Menu = styled(NavLink)`
 
     &:nth-last-child(2),
     &:last-child {
-      color: ${purple};
+      color: ${getFontColor('purple')};
     }
 
     &:not(:last-child):not(:nth-last-child(2))::after {
@@ -67,7 +67,7 @@ const Menu = styled(NavLink)`
       display: block;
       width: 100%;
       height: 2px;
-      background-color: ${purple};
+      background-color: ${getFontColor('purple')};
     }
   }
 `
@@ -78,7 +78,7 @@ const PointDot = styled.div`
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: ${purple};
+  background-color: ${getFontColor('purple')};
 `
 
 const Navigation = () => {
