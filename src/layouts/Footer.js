@@ -1,7 +1,7 @@
 import { Col, Container, Row } from 'react-bootstrap'
 import styled from 'styled-components'
 
-const textStyle12 = '12px'
+import { getFontColor } from '../util/common'
 
 const FooterDiv = styled.footer`
   height: 100%;
@@ -10,13 +10,43 @@ const FooterDiv = styled.footer`
   background-color: #f7f8fa;
 `
 const FooterTitle = styled.h4`
-  font-size: ${textStyle12};
+  font-size: 12px;
   font-weight: 700;
   margin-bottom: 12px;
 `
-const FooterContent = styled.p`
-  font-size: ${textStyle12};
-  margin-bottom: 2px;
+const FooterDetailItem = styled.div`
+  display: flex;
+  font-size: 11px;
+  margin-bottom: 4px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  dt,
+  dd {
+    margin-bottom: 0;
+  }
+
+  dt {
+    margin-right: 8px;
+    font-weight: 600;
+    vertical-align: top;
+  }
+
+  dd {
+    margin-top: 1px;
+    &::before {
+      content: '|';
+      display: inline-block;
+      margin-right: 8px;
+    }
+  }
+
+  a:hover,
+  dd:hover {
+    color: ${getFontColor('purple')};
+  }
 `
 
 const Footer = () => {
@@ -26,10 +56,29 @@ const Footer = () => {
         <Col sm={4}>
           <FooterDiv>
             <FooterTitle>빵빵마켓 BB-market</FooterTitle>
-            <FooterContent>대표이사: 이려원</FooterContent>
-            <FooterContent>주소: 서울 송파구 삼전동</FooterContent>
-            <FooterContent>dev.rwlee@gmail.com</FooterContent>
-            <FooterContent>https://github.com/rwony</FooterContent>
+
+            <dl>
+              <FooterDetailItem>
+                <dt>대표이사</dt>
+                <dd>이려원</dd>
+              </FooterDetailItem>
+              <FooterDetailItem>
+                <dt>주소</dt>
+                <dd>
+                  <a href="https://github.com/rwony" target="_black">
+                    https://github.com/rwony
+                  </a>
+                </dd>
+              </FooterDetailItem>
+              <FooterDetailItem>
+                <dt>이메일</dt>
+                <dd>
+                  <address>
+                    <a href="mailto:dev.rwlee@gmail.com">dev.rwlee@gmail.com</a>
+                  </address>
+                </dd>
+              </FooterDetailItem>
+            </dl>
           </FooterDiv>
         </Col>
       </Row>
