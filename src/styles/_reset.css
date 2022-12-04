@@ -57,5 +57,18 @@ ol {
 }
 
 address {
+  display: inline-block;
+  margin-bottom: 0 !important;
   font-style: normal;
+}
+
+dl,
+ol,
+ul {
+  margin-bottom: 0 !important;
+}
+
+dt,
+dd {
+  display: inline-block !important;
 }
