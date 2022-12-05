@@ -18,7 +18,7 @@ const NavContainer = styled(Navbar)`
   height: ${NavHeight};
   z-index: 400;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
-  background-color: #fff !important;
+  background-color: ${getFontColor('white')} !important;
 `
 const LogoImageTemplete = styled.img`
   display: block;
@@ -52,6 +52,7 @@ const Menu = styled(NavLink)`
   }
 
   &.active {
+    color: ${getFontColor('primary')};
     font-weight: 700;
 
     &:nth-last-child(2),
@@ -62,7 +63,7 @@ const Menu = styled(NavLink)`
     &:not(:last-child):not(:nth-last-child(2))::after {
       content: '';
       position: absolute;
-      bottom: -1px;
+      bottom: 0;
       right: 0;
       display: block;
       width: 100%;
@@ -90,21 +91,20 @@ const Navigation = () => {
 
       <MenuContainer>
         <Logo to={'/'}>
-          <LogoImageTemplete src={LogoImage} />
+          <LogoImageTemplete src={LogoImage} alt="빵빵마켓" />
         </Logo>
         <Menu to={'/about'}>About</Menu>
-        {/* <Menu to={'/best'}>베스트</Menu> */}
-        <Menu to={'/product'}>둘러보기</Menu>
+        <Menu to={'/best'}>BEST</Menu>
         <Menu to={'/chat'}>수다방</Menu>
         <Menu to={'/event'}>
           이벤트
           <PointDot />
         </Menu>
         <Menu to={'/cart'}>
-          <FontAwesomeIcon icon={faCartShopping} />
+          <FontAwesomeIcon icon={faCartShopping} aria-label="장바구니" />
         </Menu>
         <Menu to={'/favorite'}>
-          <FontAwesomeIcon icon={faHeart} />
+          <FontAwesomeIcon icon={faHeart} aria-label="찜 목록" />
         </Menu>
       </MenuContainer>
     </NavContainer>

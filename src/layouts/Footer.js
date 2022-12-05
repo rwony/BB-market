@@ -6,7 +6,7 @@ import { getFontColor } from '../util/common'
 const FooterDiv = styled.footer`
   height: 100%;
   margin: 0 -12px;
-  padding: 16px;
+  padding: 20px 16px;
   background-color: #f7f8fa;
 `
 const FooterTitle = styled.h4`
