@@ -46,11 +46,6 @@ const Menu = styled(NavLink)`
   font-size: 13px;
   letter-spacing: -0.01em;
 
-  &:hover {
-    color: ${getFontColor('purple')};
-    transition: color 0.2s ease-in-out;
-  }
-
   &.active {
     color: ${getFontColor('primary')};
     font-weight: 700;

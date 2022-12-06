@@ -1,23 +1,21 @@
-import { Col, Container, Row } from 'react-bootstrap'
+import { Container, Col, Row } from 'react-bootstrap'
 import styled from 'styled-components'
-
-import { getFontColor } from '../util/common'
 
 const FooterDiv = styled.footer`
   height: 100%;
-  margin: 0 -12px;
-  padding: 20px 16px;
+  margin: 0 calc(-0.5 * 1.5rem);
+  padding: 24px 16px;
+  text-align: center;
   background-color: #f7f8fa;
 `
 const FooterTitle = styled.h4`
   font-size: 12px;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 `
 const FooterDetailItem = styled.div`
-  display: flex;
-  font-size: 11px;
   margin-bottom: 4px;
+  font-size: 11px;
 
   &:last-child {
     margin-bottom: 0;
@@ -35,38 +33,39 @@ const FooterDetailItem = styled.div`
   }
 
   dd {
-    margin-top: 1px;
+    span {
+      display: inline-block;
+      margin-top: 1px;
+    }
+
     &::before {
       content: '|';
       display: inline-block;
       margin-right: 8px;
     }
   }
-
-  a:hover,
-  dd:hover {
-    color: ${getFontColor('purple')};
-  }
 `
 
 const Footer = () => {
   return (
-    <Container>
+    <Container fluid>
       <Row>
-        <Col sm={4}>
+        <Col sm>
           <FooterDiv>
             <FooterTitle>빵빵마켓 BB-market</FooterTitle>
 
             <dl>
               <FooterDetailItem>
                 <dt>대표이사</dt>
-                <dd>이려원</dd>
+                <dd>
+                  <span>이려원</span>
+                </dd>
               </FooterDetailItem>
               <FooterDetailItem>
                 <dt>주소</dt>
                 <dd>
                   <a href="https://github.com/rwony" target="_black">
-                    https://github.com/rwony
+                    <span>https://github.com/rwony</span>
                   </a>
                 </dd>
               </FooterDetailItem>
@@ -74,8 +73,18 @@ const Footer = () => {
                 <dt>이메일</dt>
                 <dd>
                   <address>
-                    <a href="mailto:dev.rwlee@gmail.com">dev.rwlee@gmail.com</a>
+                    <a href="mailto:dev.rwlee@gmail.com">
+                      <span>dev.rwlee@gmail.com</span>
+                    </a>
                   </address>
+                </dd>
+              </FooterDetailItem>
+              <FooterDetailItem>
+                <dt>고객센터</dt>
+                <dd>
+                  <a href="tel:010-1234-5678">
+                    <span>010-1234-5678</span>
+                  </a>
                 </dd>
               </FooterDetailItem>
             </dl>
