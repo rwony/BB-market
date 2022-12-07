@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import axios from 'axios'
 
 import Card from '../component/Card'
+import { getFontColor } from '../util/common'
 
 const BannerContainer = styled.div`
   width: 100%;
@@ -41,6 +42,36 @@ const MainBannerDiv = styled.div`
     height: 400px;
   }
 `
+const SectionDiv = styled.div`
+  background: url(${process.env.PUBLIC_URL +
+    './assets/products/right-arrow.png'})
+    no-repeat 100% center / 8px;
+  cursor: pointer;
+`
+const SectionTitleSpan = styled.span`
+  position: relative;
+  display: inline-block;
+  padding: 16px 0;
+  font-size: 16px;
+  color: ${getFontColor('dark')};
+  line-height: 22px;
+  letter-spacing: -0.05em;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    bottom: 14px;
+    width: calc(100% - 22px);
+    height: 5px;
+    background-color: ${getFontColor('purple')};
+    opacity: 0.6;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
+`
 const ProductImageGroup = styled.div`
   display: flex;
   justify-content: center;
@@ -69,38 +100,45 @@ const Home = ({ shoes, setShoes }) => {
 
       <Container>
         <Row>
-          <ProductImageGroup>
-            {shoes.map((shoes, i) => (
-              <Card data={shoes} key={i} />
-            ))}
-          </ProductImageGroup>
+          <Col>
+            <SectionDiv>
+              <h4>
+                <SectionTitleSpan>✨ 오늘의 신상</SectionTitleSpan>
+              </h4>
+            </SectionDiv>
+            <ProductImageGroup>
+              {shoes.map((shoes, i) => (
+                <Card data={shoes} key={i} />
+              ))}
+            </ProductImageGroup>
 
-          {addButton ? (
-            <button
-              type="button"
-              onClick={() => {
-                setMoreButton(moreButton + 1)
+            {addButton ? (
+              <button
+                type="button"
+                onClick={() => {
+                  setMoreButton(moreButton + 1)
 
-                if (moreButton === 2) {
-                  setAddButton(false)
-                }
+                  if (moreButton === 2) {
+                    setAddButton(false)
+                  }
 
-                axios
-                  .get(
-                    `https://raw.githubusercontent.com/rwony/rwony.github.io/main/BB-market/data${moreButton}.json`
-                  )
-                  .then((result) => {
-                    const newData = [...shoes, ...result.data]
-                    setShoes(newData)
-                  })
-                  .catch(() => {
-                    console.log('Failed get data')
-                  })
-              }}
-            >
-              더보기
-            </button>
-          ) : null}
+                  axios
+                    .get(
+                      `https://raw.githubusercontent.com/rwony/rwony.github.io/main/BB-market/data${moreButton}.json`
+                    )
+                    .then((result) => {
+                      const newData = [...shoes, ...result.data]
+                      setShoes(newData)
+                    })
+                    .catch(() => {
+                      console.log('Failed get data')
+                    })
+                }}
+              >
+                더보기
+              </button>
+            ) : null}
+          </Col>
         </Row>
       </Container>
     </>

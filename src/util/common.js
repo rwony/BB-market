@@ -19,6 +19,12 @@ export const getFontColor = (color) => {
     case 'primary':
       return '#3f4150'
       break
+    case 'secondary':
+      return '#8c8d96'
+      break
+    case 'tertiary':
+      return '#b2b3b9'
+      break
     case 'purple':
       return '#6c5ce7'
       break
