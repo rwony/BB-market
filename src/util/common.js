@@ -28,6 +28,12 @@ export const getFontColor = (color) => {
     case 'purple':
       return '#6c5ce7'
       break
+    case 'blue':
+      return '#1a6dff'
+      break
+    case 'yellow':
+      return '#ffc100'
+      break
     case 'border':
       return '#e0e2e7'
       break
