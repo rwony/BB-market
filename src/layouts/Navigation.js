@@ -1,7 +1,7 @@
 import { Navbar, Container } from 'react-bootstrap'
 import { Link, NavLink } from 'react-router-dom'
 
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
@@ -52,7 +52,7 @@ const Menu = styled(NavLink)`
 
     &:nth-last-child(2),
     &:last-child {
-      color: ${getFontColor('purple')};
+      color: ${getFontColor('yellow')};
     }
 
     &:not(:last-child):not(:nth-last-child(2))::after {
@@ -63,8 +63,18 @@ const Menu = styled(NavLink)`
       display: block;
       width: 100%;
       height: 2px;
-      background-color: ${getFontColor('purple')};
+      background-color: ${getFontColor('yellow')};
     }
+  }
+`
+const dotFade = keyframes`
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(2.5);
   }
 `
 const PointDot = styled.div`
@@ -74,7 +84,17 @@ const PointDot = styled.div`
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: ${getFontColor('purple')};
+  background-color: ${getFontColor('yellow')};
+`
+const PointDotBackground = styled.div`
+  position: absolute;
+  top: -1px;
+  right: -5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: ${getFontColor('yellow')};
+  animation: ${dotFade} 1s infinite linear alternate;
 `
 
 const Navigation = () => {
@@ -94,6 +114,7 @@ const Navigation = () => {
         <Menu to={'/event'}>
           이벤트
           <PointDot />
+          <PointDotBackground />
         </Menu>
         <Menu to={'/cart'}>
           <FontAwesomeIcon icon={faCartShopping} aria-label="장바구니" />
