@@ -5,23 +5,31 @@ import { Col, Container, Nav, Row } from 'react-bootstrap'
 import styled, { css, keyframes } from 'styled-components'
 import { getFontColor } from '../util/common'
 
-const MainImageDiv = styled.section`
-  margin: 0 -12px 16px;
+const MainTopDiv = styled.section`
+  display: flex;
+  flex-direction: column;
+  margin: 0 -12px;
+
+  /* @media screen and (min-width: 768px) {
+    padding-top: 120px;
+  } */
 `
 const MainImage = styled.img`
   display: block;
   width: 100%;
 `
-const ProductTopInfo = styled.section`
+const ProductTopInfo = styled.div`
   color: ${getFontColor('dark')};
-  padding: 16px 0;
-  margin-bottom: 12px;
+  border-bottom: 8px solid ${getFontColor('border')};
+`
+const ProductInfo = styled.div`
+  padding: 24px 20px;
   border-bottom: 1px solid ${getFontColor('border')};
 
   p {
     display: -webkit-inline-box;
-    padding: 0 4px;
-    margin-bottom: 8px;
+    padding: 1px 4px 0;
+    margin-bottom: 6px;
     font-size: 11px;
     color: ${getFontColor('secondary')};
     border: 1px solid ${getFontColor('border')};
@@ -35,7 +43,7 @@ const ProductTopInfo = styled.section`
 
   h4 {
     display: -webkit-box;
-    font-size: 16px;
+    font-size: 18px;
     letter-spacing: -0.02em;
     text-overflow: ellipsis;
     -webkit-line-clamp: 3;
@@ -62,6 +70,25 @@ const ProductOriginalPrice = styled.span`
   color: ${getFontColor('tertiary')};
   font-size: 14px;
   text-decoration: line-through;
+`
+const DeliveryInfo = styled.div`
+  padding: 24px 20px;
+  font-size: 13px;
+  letter-spacing: -0.02em;
+`
+const InfoItem = styled.div`
+  display: flex;
+
+  dt {
+    flex-shrink: 0;
+    width: 75px;
+    color: ${getFontColor('tertiary')};
+    font-weight: 500;
+  }
+
+  dd {
+    font-weight: 500;
+  }
 `
 
 const fadeContent = keyframes`
@@ -120,31 +147,55 @@ const Detail = ({ shoes }) => {
   return (
     <Container>
       <Row>
-        <Col sm={4}>
+        <Col sm md={6}>
           {alert ? (
             <div className="alert alert-warning">2초 이내 구매시 할인!</div>
           ) : null}
-          <MainImageDiv>
+          <MainTopDiv>
             <MainImage
-              // src={`https://codingapple1.github.io/shop/shoes${target.id}.jpg`}
               src={target.thumbnail}
               alt={`${target.title}의 메인 이미지`}
             />
-          </MainImageDiv>
 
-          <ProductTopInfo>
-            <p>{target.brand}</p>
-            <h4>{target.title}</h4>
-            {discount !== '0' && discount !== null ? (
-              <DisCountSpan>{discount}%</DisCountSpan>
-            ) : null}
-            <ProductPrice>{target.price.toLocaleString()}원</ProductPrice>
-            {parseInt(target.originalPrice) !== 0 ? (
-              <ProductOriginalPrice>
-                {target.originalPrice.toLocaleString()}원
-              </ProductOriginalPrice>
-            ) : null}
-          </ProductTopInfo>
+            <ProductTopInfo>
+              <ProductInfo>
+                <p>{target.brand}</p>
+                <h4>{target.title}</h4>
+                {discount !== '0' && discount !== null ? (
+                  <DisCountSpan aria-label={`할인율 ${discount}%`}>
+                    {discount}%
+                  </DisCountSpan>
+                ) : null}
+                <ProductPrice aria-label={`판매가격 ${target.price}원`}>
+                  {target.price.toLocaleString()}원
+                </ProductPrice>
+                {parseInt(target.originalPrice) !== 0 ? (
+                  <ProductOriginalPrice
+                    aria-label={`할인 전 가격 ${target.originalPrice}원`}
+                  >
+                    {target.originalPrice.toLocaleString()}원
+                  </ProductOriginalPrice>
+                ) : null}
+              </ProductInfo>
+
+              <DeliveryInfo>
+                <dl>
+                  <InfoItem>
+                    <dt>배송안내</dt>
+                    <dd>업체 직접 배송</dd>
+                  </InfoItem>
+                  <InfoItem>
+                    <dt>배송정보</dt>
+                    <dd>우체국택배</dd>
+                  </InfoItem>
+                  <InfoItem>
+                    <dt>배송비</dt>
+                    <dd>무료배송</dd>
+                  </InfoItem>
+                </dl>
+              </DeliveryInfo>
+            </ProductTopInfo>
+          </MainTopDiv>
         </Col>
       </Row>
 
