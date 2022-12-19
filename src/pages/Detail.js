@@ -5,6 +5,9 @@ import { Col, Container, Nav, Row } from 'react-bootstrap'
 import styled, { css, keyframes } from 'styled-components'
 import { getFontColor } from '../util/common'
 
+import WishIcon from '../images/heart.png'
+import WishFillIcon from '../images/heart-fill.png'
+
 const TopCol = styled(Col)`
   display: flex;
   flex-direction: column;
@@ -204,6 +207,37 @@ const TabBox = styled.div`
 const Content = styled.img`
   display: block;
   width: 100%;
+  margin: 0 -12px;
+`
+const OrderCta = styled.div`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: ${getFontColor('white')};
+  z-index: 1000;
+  border-top: 1px solid ${getFontColor('border')};
+`
+const WishButton = styled.button`
+  width: 25px;
+  height: 25px;
+  margin: 4px 16px 0 22px;
+  background-image: url(${WishIcon});
+  background-repeat: no-repeat;
+  background-size: cover;
+`
+const PurchaseButton = styled.button`
+  flex-grow: 1;
+  height: 34px;
+  margin-right: 16px;
+  border-radius: 16px;
+  font-size: 14px;
+  color: ${getFontColor('white')};
+  background-color: ${getFontColor('yellow')};
 `
 
 const Detail = ({ shoes }) => {
@@ -237,21 +271,22 @@ const Detail = ({ shoes }) => {
   }, [])
 
   return (
-    <Container>
-      <Row>
-        <TopCol sm md={7}>
-          {alert ? (
-            <div className="alert alert-warning">2초 이내 구매시 할인!</div>
-          ) : null}
-          <MainTopDiv>
-            <div>
-              <MainImage
-                src={target.thumbnail}
-                alt={`${target.title}의 메인 이미지`}
-              />
-            </div>
+    <>
+      <Container>
+        <Row>
+          <TopCol sm md={7}>
+            {alert ? (
+              <div className="alert alert-warning">2초 이내 구매시 할인!</div>
+            ) : null}
+            <MainTopDiv>
+              <div>
+                <MainImage
+                  src={target.thumbnail}
+                  alt={`${target.title}의 메인 이미지`}
+                />
+              </div>
 
-            {/* <ProductTopInfo>
+              {/* <ProductTopInfo>
               <ProductInfo>
                 <p>{target.brand}</p>
                 <h4>{target.title}</h4>
@@ -302,102 +337,112 @@ const Detail = ({ shoes }) => {
                 </div>
               </PurchaseInfo>
             </ProductTopInfo> */}
-          </MainTopDiv>
-        </TopCol>
-        <TopCol sm md={5}>
-          <ProductTopInfo>
-            <ProductInfo>
-              <p>{target.brand}</p>
-              <h4>{target.title}</h4>
-              {discount !== '0' && discount !== null ? (
-                <DisCountSpan aria-label={`할인율 ${discount}%`}>
-                  {discount}%
-                </DisCountSpan>
-              ) : null}
-              <ProductPrice aria-label={`판매가격 ${target.price}원`}>
-                {target.price.toLocaleString()}원
-              </ProductPrice>
-              {parseInt(target.originalPrice) !== 0 ? (
-                <ProductOriginalPrice
-                  aria-label={`할인 전 가격 ${target.originalPrice}원`}
+            </MainTopDiv>
+          </TopCol>
+          <TopCol sm md={5}>
+            <ProductTopInfo>
+              <ProductInfo>
+                <p>{target.brand}</p>
+                <h4>{target.title}</h4>
+                {discount !== '0' && discount !== null ? (
+                  <DisCountSpan aria-label={`할인율 ${discount}%`}>
+                    {discount}%
+                  </DisCountSpan>
+                ) : null}
+                <ProductPrice aria-label={`판매가격 ${target.price}원`}>
+                  {target.price.toLocaleString()}원
+                </ProductPrice>
+                {parseInt(target.originalPrice) !== 0 ? (
+                  <ProductOriginalPrice
+                    aria-label={`할인 전 가격 ${target.originalPrice}원`}
+                  >
+                    {target.originalPrice.toLocaleString()}원
+                  </ProductOriginalPrice>
+                ) : null}
+              </ProductInfo>
+
+              <DeliveryInfo>
+                <dl>
+                  <InfoItem>
+                    <dt>배송안내</dt>
+                    <dd>업체 직접 배송</dd>
+                  </InfoItem>
+                  <InfoItem>
+                    <dt>배송정보</dt>
+                    <dd>우체국택배</dd>
+                  </InfoItem>
+                  <InfoItem>
+                    <dt>배송비</dt>
+                    <dd>무료배송</dd>
+                  </InfoItem>
+                </dl>
+              </DeliveryInfo>
+
+              <PurchaseInfo>
+                <p>{target.title}</p>
+                <div>
+                  <button type="button">-</button>
+                  <input type={'text'} value="1" />
+                  <button type="button">+</button>
+                </div>
+                <div>
+                  <button type="button">X</button>
+                  <span></span>
+                </div>
+              </PurchaseInfo>
+            </ProductTopInfo>
+          </TopCol>
+        </Row>
+
+        <Row>
+          <Col>
+            <ProductNav variant="tabs" defaultActiveKey="link-0">
+              <Nav.Item>
+                <Nav.Link
+                  onClick={() => {
+                    setTab(0)
+                  }}
+                  eventKey="link-0"
                 >
-                  {target.originalPrice.toLocaleString()}원
-                </ProductOriginalPrice>
-              ) : null}
-            </ProductInfo>
+                  상품정보
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link
+                  onClick={() => {
+                    setTab(1)
+                  }}
+                  eventKey="link-1"
+                >
+                  리뷰
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link
+                  onClick={() => {
+                    setTab(2)
+                  }}
+                  eventKey="link-2"
+                >
+                  교환/환불
+                </Nav.Link>
+              </Nav.Item>
+            </ProductNav>
 
-            <DeliveryInfo>
-              <dl>
-                <InfoItem>
-                  <dt>배송안내</dt>
-                  <dd>업체 직접 배송</dd>
-                </InfoItem>
-                <InfoItem>
-                  <dt>배송정보</dt>
-                  <dd>우체국택배</dd>
-                </InfoItem>
-                <InfoItem>
-                  <dt>배송비</dt>
-                  <dd>무료배송</dd>
-                </InfoItem>
-              </dl>
-            </DeliveryInfo>
+            <TabContent
+              tab={tab}
+              title={target.title}
+              content={target.content}
+            />
+          </Col>
+        </Row>
+      </Container>
 
-            <PurchaseInfo>
-              <p>{target.title}</p>
-              <div>
-                <button type="button">-</button>
-                <input type={'text'} value="1" />
-                <button type="button">+</button>
-              </div>
-              <div>
-                <button type="button">X</button>
-                <span></span>
-              </div>
-            </PurchaseInfo>
-          </ProductTopInfo>
-        </TopCol>
-      </Row>
-
-      <Row>
-        <Col>
-          <ProductNav variant="tabs" defaultActiveKey="link-0">
-            <Nav.Item>
-              <Nav.Link
-                onClick={() => {
-                  setTab(0)
-                }}
-                eventKey="link-0"
-              >
-                상품정보
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link
-                onClick={() => {
-                  setTab(1)
-                }}
-                eventKey="link-1"
-              >
-                리뷰
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link
-                onClick={() => {
-                  setTab(2)
-                }}
-                eventKey="link-2"
-              >
-                교환/환불
-              </Nav.Link>
-            </Nav.Item>
-          </ProductNav>
-
-          <TabContent tab={tab} title={target.title} content={target.content} />
-        </Col>
-      </Row>
-    </Container>
+      <OrderCta>
+        <WishButton type="button"></WishButton>
+        <PurchaseButton type="button">구매하기</PurchaseButton>
+      </OrderCta>
+    </>
   )
 }
 

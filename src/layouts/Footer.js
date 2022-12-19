@@ -3,10 +3,14 @@ import styled from 'styled-components'
 
 const FooterDiv = styled.footer`
   height: 100%;
-  margin: 0 calc(-0.5 * 1.5rem);
+  margin: 0 calc(-0.5 * 1.5rem) 50px;
   padding: 24px 16px;
   text-align: center;
   background-color: #f7f8fa;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+  }
 `
 const FooterTitle = styled.h4`
   font-size: 12px;
