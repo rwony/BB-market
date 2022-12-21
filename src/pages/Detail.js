@@ -221,6 +221,10 @@ const OrderCta = styled.div`
   background-color: ${getFontColor('white')};
   z-index: 1000;
   border-top: 1px solid ${getFontColor('border')};
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `
 const WishButton = styled.button`
   width: 25px;
@@ -232,6 +236,7 @@ const WishButton = styled.button`
 `
 const PurchaseButton = styled.button`
   flex-grow: 1;
+  /* max-width: 200px; */
   height: 34px;
   margin-right: 16px;
   border-radius: 16px;
@@ -287,56 +292,56 @@ const Detail = ({ shoes }) => {
               </div>
 
               {/* <ProductTopInfo>
-              <ProductInfo>
-                <p>{target.brand}</p>
-                <h4>{target.title}</h4>
-                {discount !== '0' && discount !== null ? (
-                  <DisCountSpan aria-label={`할인율 ${discount}%`}>
-                    {discount}%
-                  </DisCountSpan>
-                ) : null}
-                <ProductPrice aria-label={`판매가격 ${target.price}원`}>
-                  {target.price.toLocaleString()}원
-                </ProductPrice>
-                {parseInt(target.originalPrice) !== 0 ? (
-                  <ProductOriginalPrice
-                    aria-label={`할인 전 가격 ${target.originalPrice}원`}
-                  >
-                    {target.originalPrice.toLocaleString()}원
-                  </ProductOriginalPrice>
-                ) : null}
-              </ProductInfo>
+                <ProductInfo>
+                  <p>{target.brand}</p>
+                  <h4>{target.title}</h4>
+                  {discount !== '0' && discount !== null ? (
+                    <DisCountSpan aria-label={`할인율 ${discount}%`}>
+                      {discount}%
+                    </DisCountSpan>
+                  ) : null}
+                  <ProductPrice aria-label={`판매가격 ${target.price}원`}>
+                    {target.price.toLocaleString()}원
+                  </ProductPrice>
+                  {parseInt(target.originalPrice) !== 0 ? (
+                    <ProductOriginalPrice
+                      aria-label={`할인 전 가격 ${target.originalPrice}원`}
+                    >
+                      {target.originalPrice.toLocaleString()}원
+                    </ProductOriginalPrice>
+                  ) : null}
+                </ProductInfo>
 
-              <DeliveryInfo>
-                <dl>
-                  <InfoItem>
-                    <dt>배송안내</dt>
-                    <dd>업체 직접 배송</dd>
-                  </InfoItem>
-                  <InfoItem>
-                    <dt>배송정보</dt>
-                    <dd>우체국택배</dd>
-                  </InfoItem>
-                  <InfoItem>
-                    <dt>배송비</dt>
-                    <dd>무료배송</dd>
-                  </InfoItem>
-                </dl>
-              </DeliveryInfo>
+                <DeliveryInfo>
+                  <dl>
+                    <InfoItem>
+                      <dt>배송안내</dt>
+                      <dd>업체 직접 배송</dd>
+                    </InfoItem>
+                    <InfoItem>
+                      <dt>배송정보</dt>
+                      <dd>우체국택배</dd>
+                    </InfoItem>
+                    <InfoItem>
+                      <dt>배송비</dt>
+                      <dd>무료배송</dd>
+                    </InfoItem>
+                  </dl>
+                </DeliveryInfo>
 
-              <PurchaseInfo>
-                <p>{target.title}</p>
-                <div>
-                  <button type="button">-</button>
-                  <input type={'text'} value="1" />
-                  <button type="button">+</button>
-                </div>
-                <div>
-                  <button type="button">X</button>
-                  <span></span>
-                </div>
-              </PurchaseInfo>
-            </ProductTopInfo> */}
+                <PurchaseInfo>
+                  <p>{target.title}</p>
+                  <div>
+                    <button type="button">-</button>
+                    <input type={'text'} value="1" />
+                    <button type="button">+</button>
+                  </div>
+                  <div>
+                    <button type="button">X</button>
+                    <span></span>
+                  </div>
+                </PurchaseInfo>
+              </ProductTopInfo> */}
             </MainTopDiv>
           </TopCol>
           <TopCol sm md={5}>
