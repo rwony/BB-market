@@ -11,13 +11,13 @@ import WishFillIcon from '../images/heart-fill.png'
 const TopCol = styled(Col)`
   display: flex;
   flex-direction: column;
-`
-const MainTopDiv = styled.section`
-  margin: 0 -12px;
 
   @media screen and (min-width: 768px) {
     padding-top: 50px;
   }
+`
+const MainTopDiv = styled.section`
+  margin: 0 -12px;
 `
 const MainImage = styled.img`
   display: block;
@@ -35,6 +35,7 @@ const ProductTopInfo = styled.div`
 
   @media screen and (min-width: 768px) {
     flex-grow: 1;
+    border-bottom: none;
   }
 `
 const ProductInfo = styled.div`
@@ -54,6 +55,10 @@ const ProductInfo = styled.div`
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+
+    @media screen and (min-width: 768px) {
+      font-size: 13px;
+    }
   }
 
   h4 {
@@ -67,7 +72,7 @@ const ProductInfo = styled.div`
 
     @media screen and (min-width: 768px) {
       margin-bottom: 16px;
-      font-size: 24px;
+      font-size: 26px;
     }
   }
 
@@ -113,6 +118,10 @@ const DeliveryInfo = styled.div`
   padding: 20px 20px 0;
   font-size: 13px;
   letter-spacing: -0.02em;
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 20px;
+  }
 `
 const InfoItem = styled.div`
   display: flex;
@@ -137,7 +146,7 @@ const PurchaseInfo = styled.div`
 
   p {
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 400;
   }
 
   @media screen and (min-width: 768px) {
@@ -146,12 +155,17 @@ const PurchaseInfo = styled.div`
 `
 
 const ProductNav = styled(Nav)`
+  position: sticky;
+  top: 60px;
   display: flex;
   justify-content: space-between;
   flex-grow: 1;
+  z-index: 40;
   margin: 0 -12px;
+  background-color: ${getFontColor('white')};
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: -0.02em;
 
   & > .nav-item {
     position: relative;
@@ -183,6 +197,16 @@ const ProductNav = styled(Nav)`
       border-color: ${getFontColor('white')};
       color: gray;
     }
+
+    @media screen and (min-width: 768px) {
+      height: 60px;
+      padding-top: 20px;
+      font-size: 14px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    padding-top: 20px;
   }
 `
 
@@ -207,7 +231,6 @@ const TabBox = styled.div`
 const Content = styled.img`
   display: block;
   width: 100%;
-  margin: 0 -12px;
 `
 const OrderCta = styled.div`
   position: fixed;
@@ -279,7 +302,7 @@ const Detail = ({ shoes }) => {
     <>
       <Container>
         <Row>
-          <TopCol sm md={7}>
+          <TopCol sm md={6}>
             {alert ? (
               <div className="alert alert-warning">2초 이내 구매시 할인!</div>
             ) : null}
@@ -344,7 +367,7 @@ const Detail = ({ shoes }) => {
               </ProductTopInfo> */}
             </MainTopDiv>
           </TopCol>
-          <TopCol sm md={5}>
+          <TopCol sm md={6}>
             <ProductTopInfo>
               <ProductInfo>
                 <p>{target.brand}</p>

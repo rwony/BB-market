@@ -52,7 +52,7 @@ const SectionTitleSpan = styled.span`
   position: relative;
   display: inline-block;
   padding: 16px 0;
-  font-size: 16px;
+  font-size: 14px;
   color: ${getFontColor('dark')};
   line-height: 22px;
   letter-spacing: -0.05em;
@@ -60,16 +60,15 @@ const SectionTitleSpan = styled.span`
   &::before {
     content: '';
     position: absolute;
-    left: 24px;
+    left: 22px;
     bottom: 14px;
     width: calc(100% - 22px);
     height: 5px;
-    background-color: ${getFontColor('purple')};
-    opacity: 0.6;
+    background-color: ${getFontColor('yellow')};
   }
 
   @media screen and (min-width: 768px) {
-    font-size: 20px;
+    font-size: 16px;
   }
 `
 const ProductImageGroup = styled.div`
@@ -116,11 +115,9 @@ const Home = ({ shoes, setShoes }) => {
               <button
                 type="button"
                 onClick={() => {
-                  setMoreButton(moreButton + 1)
-
-                  if (moreButton === 2) {
-                    setAddButton(false)
-                  }
+                  moreButton === 2
+                    ? setAddButton(false)
+                    : setMoreButton(moreButton + 1)
 
                   axios
                     .get(
@@ -130,14 +127,24 @@ const Home = ({ shoes, setShoes }) => {
                       const newData = [...shoes, ...result.data]
                       setShoes(newData)
                     })
-                    .catch(() => {
-                      console.log('Failed get data')
+                    .catch((e) => {
+                      console.log(`Failed get data: ${e}`)
                     })
                 }}
               >
                 더보기
               </button>
             ) : null}
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <SectionDiv>
+              <h4>
+                <SectionTitleSpan>🎁 진행중인 이벤트</SectionTitleSpan>
+              </h4>
+            </SectionDiv>
           </Col>
         </Row>
       </Container>

@@ -16,7 +16,7 @@ const NavContainer = styled(Navbar)`
   top: 0;
   width: 100%;
   height: ${NavHeight};
-  z-index: 400;
+  z-index: 50;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
   background-color: ${getFontColor('white')} !important;
 `
