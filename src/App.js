@@ -12,6 +12,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './styles/_normalize.css'
 import './styles/_reset.css'
 import './App.css'
+import Best from './pages/Best'
+import About from './pages/About'
+import Cart from './pages/Cart'
 
 function App() {
   let [shoes, setShoes] = useState(ShoesList)
@@ -22,9 +25,9 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home shoes={shoes} setShoes={setShoes} />} />
-        <Route path="/about" element={<div>ABOUT</div>} />
-        <Route path="/best" element={<div>베스트</div>} />
-        <Route path="/product" element={<div>둘러보기</div>} />
+        <Route path="/about" element={<About />} />
+        <Route path="/best" element={<Best />} />
+        {/* <Route path="/product" element={<div>둘러보기</div>} /> */}
         <Route path="/chat" element={<div>수다방</div>} />
         <Route path="/event" element={<Event />}>
           <Route
@@ -36,7 +39,7 @@ function App() {
             element={<div>생일 기념 쿠폰 받아가세요!</div>}
           ></Route>
         </Route>
-        <Route path="/cart" element={<div>장바구니</div>} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
         <Route path="/*" element={<div>없는 페이지입니다.</div>} />
       </Routes>

@@ -8,13 +8,13 @@ const PageTitle = styled.h1`
   letter-spacing: -0.01em;
 `
 
-const Event = () => {
+const Best = () => {
   return (
     <div>
-      <PageTitle>EVENT</PageTitle>
+      <PageTitle>BEST</PageTitle>
       <Outlet />
     </div>
   )
 }
 
-export default Event
+export default Best
