@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
-import { getFontColor } from '../util/common'
+import { getColor } from '../util/common'
 import LogoImage from '../images/logo.svg'
 
 const NavHeight = '60px'
@@ -18,7 +18,7 @@ const NavContainer = styled(Navbar)`
   height: ${NavHeight};
   z-index: 50;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
-  background-color: ${getFontColor('white')} !important;
+  background-color: ${getColor('white')} !important;
 `
 const LogoImageTemplete = styled.img`
   display: block;
@@ -47,12 +47,12 @@ const Menu = styled(NavLink)`
   letter-spacing: -0.01em;
 
   &.active {
-    color: ${getFontColor('primary')};
+    color: ${getColor('primary')};
     font-weight: 700;
 
     &:nth-last-child(2),
     &:last-child {
-      color: ${getFontColor('yellow')};
+      color: ${getColor('yellow')};
     }
 
     &:not(:last-child):not(:nth-last-child(2))::after {
@@ -63,7 +63,7 @@ const Menu = styled(NavLink)`
       display: block;
       width: 100%;
       height: 2px;
-      background-color: ${getFontColor('yellow')};
+      background-color: ${getColor('yellow')};
     }
   }
 `
@@ -84,7 +84,7 @@ const PointDot = styled.div`
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: ${getFontColor('yellow')};
+  background-color: ${getColor('yellow')};
 `
 const PointDotBackground = styled.div`
   position: absolute;
@@ -93,7 +93,7 @@ const PointDotBackground = styled.div`
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: ${getFontColor('yellow')};
+  background-color: ${getColor('yellow')};
   animation: ${dotFade} 1s infinite linear alternate;
 `
 

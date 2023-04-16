@@ -2,12 +2,12 @@ import { Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { getFontColor } from '../util/common'
+import { getColor } from '../util/common'
 
 const CardDiv = styled(Col)`
   width: 120px;
   height: auto;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
 `
 const CardImageDiv = styled.div`
   margin-bottom: 4px;
@@ -38,7 +38,7 @@ const CardDesc = styled.p`
   letter-spacing: -0.05em;
 `
 const CardDescStrong = styled.strong`
-  color: ${getFontColor('dark')};
+  color: ${getColor('dark')};
   font-size: 15px;
   margin-right: 1px;
 `

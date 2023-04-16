@@ -10,7 +10,6 @@ const productData = [
     content:
       'https://raw.githubusercontent.com/rwony/rwony.github.io/main/BB-market/products/AniU_content.png',
   },
-
   {
     id: 2,
     title: '지위픽 독 간식 사슴고기 85g',
@@ -22,7 +21,6 @@ const productData = [
     content:
       'https://raw.githubusercontent.com/rwony/rwony.github.io/main/BB-market/products/Ziwipeak_content.jpg',
   },
-
   {
     id: 3,
     title: '서루 하트펫백(스카이블루)',
@@ -33,6 +31,17 @@ const productData = [
       'https://raw.githubusercontent.com/rwony/rwony.github.io/main/BB-market/products/seoru_thumb.jpeg',
     content:
       'https://raw.githubusercontent.com/rwony/rwony.github.io/main/BB-market/products/seoru_content.png',
+  },
+  {
+    id: 4,
+    title: '스텔라앤츄이스X찰스장 해피하트 비치타올',
+    brand: "스텔라앤츄이스 STELLA & CHEWY'S",
+    originalPrice: 0,
+    price: 22000,
+    thumbnail:
+      'https://raw.githubusercontent.com/rwony/rwony.github.io/main/BB-market/products/stella_thumb.jpg',
+    content:
+      'https://raw.githubusercontent.com/rwony/rwony.github.io/main/BB-market/products/stella_thumb.jpg',
   },
 ]
 

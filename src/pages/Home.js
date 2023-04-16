@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import axios from 'axios'
 
 import Card from '../component/Card'
-import { getFontColor } from '../util/common'
+import { getColor } from '../util/common'
 
 const BannerContainer = styled.div`
   width: 100%;
@@ -53,7 +53,7 @@ const SectionTitleSpan = styled.span`
   display: inline-block;
   padding: 16px 0;
   font-size: 14px;
-  color: ${getFontColor('dark')};
+  color: ${getColor('dark')};
   line-height: 22px;
   letter-spacing: -0.05em;
 
@@ -64,7 +64,7 @@ const SectionTitleSpan = styled.span`
     bottom: 14px;
     width: calc(100% - 22px);
     height: 5px;
-    background-color: ${getFontColor('yellow')};
+    background-color: ${getColor('yellow')};
   }
 
   @media screen and (min-width: 768px) {
@@ -73,9 +73,18 @@ const SectionTitleSpan = styled.span`
 `
 const ProductImageGroup = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 20px;
+`
+const AddBtn = styled.button`
+  width: 60px;
+  padding: 4px;
+  margin: 16px auto 0;
+  border: 1px solid ${getColor('yellow')};
+  border-radius: 4px;
+  font-size: 14px;
+  letter-spacing: -0.05em;
 `
 
 const Home = ({ shoes, setShoes }) => {
@@ -110,32 +119,39 @@ const Home = ({ shoes, setShoes }) => {
                 <Card data={shoes} key={i} />
               ))}
             </ProductImageGroup>
-
-            {addButton ? (
-              <button
-                type="button"
-                onClick={() => {
-                  moreButton === 2
-                    ? setAddButton(false)
-                    : setMoreButton(moreButton + 1)
-
-                  axios
-                    .get(
-                      `https://raw.githubusercontent.com/rwony/rwony.github.io/main/BB-market/data${moreButton}.json`
-                    )
-                    .then((result) => {
-                      const newData = [...shoes, ...result.data]
-                      setShoes(newData)
-                    })
-                    .catch((e) => {
-                      console.log(`Failed get data: ${e}`)
-                    })
-                }}
-              >
-                더보기
-              </button>
-            ) : null}
           </Col>
+        </Row>
+
+        <Row>
+          {addButton ? (
+            <AddBtn
+              onClick={() => {
+                moreButton === 1
+                  ? setAddButton(false)
+                  : setMoreButton(moreButton + 1)
+
+                axios
+                  .get(
+                    `https://raw.githubusercontent.com/rwony/rwony.github.io/main/BB-market/data${moreButton}.json`,
+                    {
+                      headers: {
+                        'Content-Type': 'application/json; charset=utf-8',
+                      },
+                      responseType: 'json',
+                    }
+                  )
+                  .then((result) => {
+                    const newData = [...shoes, ...result.data]
+                    setShoes(newData)
+                  })
+                  .catch((e) => {
+                    console.log(`Failed get data: ${e}`)
+                  })
+              }}
+            >
+              더보기
+            </AddBtn>
+          ) : null}
         </Row>
 
         <Row>

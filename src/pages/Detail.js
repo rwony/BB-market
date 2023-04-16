@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import { Col, Container, Nav, Row } from 'react-bootstrap'
 import styled, { css, keyframes } from 'styled-components'
-import { getFontColor } from '../util/common'
+import { getColor } from '../util/common'
 
 import WishIcon from '../images/heart.png'
 import WishFillIcon from '../images/heart-fill.png'
@@ -30,8 +30,8 @@ const MainImage = styled.img`
 const ProductTopInfo = styled.div`
   padding: 20px 0;
   margin: 0 -12px;
-  color: ${getFontColor('dark')};
-  border-bottom: 8px solid ${getFontColor('border')};
+  color: ${getColor('dark')};
+  border-bottom: 8px solid ${getColor('border')};
 
   @media screen and (min-width: 768px) {
     flex-grow: 1;
@@ -40,15 +40,15 @@ const ProductTopInfo = styled.div`
 `
 const ProductInfo = styled.div`
   padding: 0 20px 20px;
-  border-bottom: 1px solid ${getFontColor('border')};
+  border-bottom: 1px solid ${getColor('border')};
 
   p {
     display: -webkit-inline-box;
     padding: 1px 4px 0;
     margin-bottom: 6px;
     font-size: 11px;
-    color: ${getFontColor('secondary')};
-    border: 1px solid ${getFontColor('border')};
+    color: ${getColor('secondary')};
+    border: 1px solid ${getColor('border')};
     border-radius: 4px;
     letter-spacing: -0.02em;
     text-overflow: ellipsis;
@@ -84,7 +84,7 @@ const DisCountSpan = styled.span`
   margin-right: 8px;
   font-size: 18px;
   font-weight: 500;
-  color: ${getFontColor('yellow')};
+  color: ${getColor('yellow')};
   letter-spacing: -0.04em;
 
   @media screen and (min-width: 768px) {
@@ -106,7 +106,7 @@ const ProductPrice = styled.strong`
 const ProductOriginalPrice = styled.span`
   position: relative;
   display: inline-block;
-  color: ${getFontColor('tertiary')};
+  color: ${getColor('tertiary')};
   font-size: 14px;
   text-decoration: line-through;
 
@@ -130,7 +130,7 @@ const InfoItem = styled.div`
   dt {
     flex-shrink: 0;
     width: 75px;
-    color: ${getFontColor('tertiary')};
+    color: ${getColor('tertiary')};
   }
 
   @media screen and (min-width: 768px) {
@@ -142,7 +142,7 @@ const PurchaseInfo = styled.div`
   display: none;
   width: 100%;
   padding: 20px;
-  background-color: ${getFontColor('background')};
+  background-color: ${getColor('background')};
 
   p {
     font-size: 14px;
@@ -162,7 +162,7 @@ const ProductNav = styled(Nav)`
   flex-grow: 1;
   z-index: 40;
   margin: 0 -12px;
-  background-color: ${getFontColor('white')};
+  background-color: ${getColor('white')};
   font-size: 13px;
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -189,12 +189,12 @@ const ProductNav = styled(Nav)`
         left: 0;
         width: 100%;
         height: 3px;
-        background-color: ${getFontColor('yellow')};
+        background-color: ${getColor('yellow')};
       }
     }
 
     &:not(.active) {
-      border-color: ${getFontColor('white')};
+      border-color: ${getColor('white')};
       color: gray;
     }
 
@@ -241,9 +241,9 @@ const OrderCta = styled.div`
   align-items: center;
   width: 100%;
   height: 50px;
-  background-color: ${getFontColor('white')};
+  background-color: ${getColor('white')};
   z-index: 1000;
-  border-top: 1px solid ${getFontColor('border')};
+  border-top: 1px solid ${getColor('border')};
 
   @media screen and (min-width: 768px) {
     display: none;
@@ -264,8 +264,8 @@ const PurchaseButton = styled.button`
   margin-right: 16px;
   border-radius: 16px;
   font-size: 14px;
-  color: ${getFontColor('white')};
-  background-color: ${getFontColor('yellow')};
+  color: ${getColor('white')};
+  background-color: ${getColor('yellow')};
 `
 
 const Detail = ({ shoes }) => {

@@ -5,7 +5,7 @@ export const checkEmptyString = (str) => {
   return true
 }
 
-export const getFontColor = (color) => {
+export const getColor = (color) => {
   switch (color) {
     case 'white':
       return '#fff'
