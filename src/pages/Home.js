@@ -17,7 +17,6 @@ const BannerRow = styled.div`
 const BannerCol = styled.div`
   width: 100%;
 `
-
 const MainImageDiv = styled.div`
   height: 100%;
   background-image: url(${process.env.PUBLIC_URL + './assets/banner/1.jpg'});
@@ -29,7 +28,6 @@ const MainBannerDiv = styled.div`
   position: relative;
   width: 100%;
   height: 190px;
-  background-color: azure;
   overflow: hidden;
 
   & > img {
@@ -41,6 +39,13 @@ const MainBannerDiv = styled.div`
   @media screen and (min-width: 768px) {
     height: 400px;
   }
+`
+const Rows = styled(Row)`
+  margin-bottom: 8px;
+`
+const FlexColRow = styled(Row)`
+  flex-direction: column;
+  margin-bottom: 8px;
 `
 const SectionDiv = styled.div`
   background: url(${process.env.PUBLIC_URL +
@@ -75,15 +80,15 @@ const ProductImageGroup = styled.div`
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
 `
 const AddBtn = styled.button`
   width: 60px;
-  padding: 4px;
+  padding: 5px 2px;
   margin: 16px auto 0;
-  border: 1px solid ${getColor('yellow')};
-  border-radius: 4px;
+  border-radius: 2px;
   font-size: 14px;
+  font-weight: bold;
   letter-spacing: -0.05em;
 `
 
@@ -107,7 +112,7 @@ const Home = ({ shoes, setShoes }) => {
       </BannerContainer>
 
       <Container>
-        <Row>
+        <FlexColRow>
           <Col>
             <SectionDiv>
               <h4>
@@ -120,9 +125,6 @@ const Home = ({ shoes, setShoes }) => {
               ))}
             </ProductImageGroup>
           </Col>
-        </Row>
-
-        <Row>
           {addButton ? (
             <AddBtn
               onClick={() => {
@@ -152,9 +154,9 @@ const Home = ({ shoes, setShoes }) => {
               더보기
             </AddBtn>
           ) : null}
-        </Row>
+        </FlexColRow>
 
-        <Row>
+        <Rows>
           <Col>
             <SectionDiv>
               <h4>
@@ -162,7 +164,7 @@ const Home = ({ shoes, setShoes }) => {
               </h4>
             </SectionDiv>
           </Col>
-        </Row>
+        </Rows>
       </Container>
     </>
   )

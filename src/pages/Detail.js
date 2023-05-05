@@ -63,6 +63,7 @@ const ProductInfo = styled.div`
 
   h4 {
     display: -webkit-box;
+    padding: 2px 0;
     font-size: 18px;
     letter-spacing: -0.02em;
     text-overflow: ellipsis;
@@ -131,6 +132,7 @@ const InfoItem = styled.div`
     flex-shrink: 0;
     width: 75px;
     color: ${getColor('tertiary')};
+    font-weight: 500;
   }
 
   @media screen and (min-width: 768px) {
