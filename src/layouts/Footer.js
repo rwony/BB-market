@@ -1,22 +1,43 @@
 import { Container, Col, Row } from 'react-bootstrap'
 import styled from 'styled-components'
+import { getColor } from '../util/common'
 
 const FooterDiv = styled.footer`
-  height: 100%;
-  margin: 0 calc(-0.5 * 1.5rem) 50px;
+  /* height: 100%; */
+  margin: 0 calc(-0.5 * 1.5rem) 0;
   padding: 24px 16px;
-  text-align: center;
   background-color: #f7f8fa;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px !important;
+    padding-bottom: 20px;
+    border-bottom: 1px solid ${getColor('border')};
+    font-size: 12px;
+
+    li {
+      cursor: pointer;
+
+      &:not(:last-child)::after {
+        content: '|';
+        margin: 0 4px;
+        color: ${getColor('tertiary')};
+      }
+    }
+  }
+
+  h4 {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
 
   @media screen and (min-width: 768px) {
     margin-bottom: 0;
   }
 `
-const FooterTitle = styled.h4`
-  font-size: 12px;
-  font-weight: 700;
-  margin-bottom: 16px;
-`
+
 const FooterDetailItem = styled.div`
   margin-bottom: 4px;
   font-size: 11px;
@@ -56,11 +77,20 @@ const Footer = () => {
       <Row>
         <Col sm>
           <FooterDiv>
-            <FooterTitle>빵빵마켓 BB-market</FooterTitle>
+            <div>
+              <ul>
+                <li>빵빵마켓 소개</li>
+                <li>이용약관</li>
+                <li>개인정보처리방침</li>
+                <li>이메일무단수집금지</li>
+              </ul>
+            </div>
+
+            <h4>빵빵마켓 BB-market</h4>
 
             <dl>
               <FooterDetailItem>
-                <dt>대표이사</dt>
+                <dt>대표</dt>
                 <dd>
                   <span>이려원</span>
                 </dd>
