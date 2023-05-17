@@ -129,8 +129,8 @@ const Navigation = () => {
         <Menu to={'/chat'}>BOARD</Menu>
         <Menu to={'/event'}>
           EVENT
-          <PointDot />
-          <PointDotBackground />
+          <PointDot aria-hidden="true" />
+          <PointDotBackground aria-hidden="true" />
         </Menu>
         <MyMenu>
           <Menu to={'/cart'}>
