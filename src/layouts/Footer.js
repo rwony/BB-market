@@ -3,38 +3,62 @@ import styled from 'styled-components'
 import { getColor } from '../util/common'
 
 const FooterDiv = styled.footer`
-  /* height: 100%; */
   margin: 0 calc(-0.5 * 1.5rem) 0;
   padding: 24px 16px;
   background-color: #f7f8fa;
 
   ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-bottom: 20px !important;
     padding-bottom: 20px;
     border-bottom: 1px solid ${getColor('border')};
     font-size: 12px;
 
     li {
+      color: ${getColor('secondary')};
+      letter-spacing: -0.03em;
       cursor: pointer;
 
       &:not(:last-child)::after {
-        content: '|';
-        margin: 0 4px;
-        color: ${getColor('tertiary')};
+        content: '';
+        display: inline-block;
+        width: 1px;
+        height: 12px;
+        background-color: ${getColor('tertiary')};
+        margin: 0 8px;
+        vertical-align: -2px;
       }
     }
   }
 
   h4 {
-    font-size: 12px;
-    font-weight: 700;
     margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 
   @media screen and (min-width: 768px) {
     margin-bottom: 0;
+    padding: 24px calc(100% - 700px);
+
+    ul {
+      li {
+        &::after {
+          content: '' !important;
+          color: red;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 24px calc(100% - 1500px);
+
+    h4 {
+      font-size: 16px;
+    }
   }
 `
 
@@ -52,8 +76,8 @@ const FooterDetailItem = styled.div`
   }
 
   dt {
+    width: 15%;
     margin-right: 8px;
-    font-weight: 600;
     vertical-align: top;
   }
 
@@ -62,12 +86,10 @@ const FooterDetailItem = styled.div`
       display: inline-block;
       margin-top: 1px;
     }
+  }
 
-    &::before {
-      content: '|';
-      display: inline-block;
-      margin-right: 8px;
-    }
+  @media screen and (min-width: 1024px) {
+    font-size: 14px;
   }
 `
 
@@ -87,7 +109,6 @@ const Footer = () => {
             </div>
 
             <h4>빵빵마켓 BB-market</h4>
-
             <dl>
               <FooterDetailItem>
                 <dt>대표</dt>
