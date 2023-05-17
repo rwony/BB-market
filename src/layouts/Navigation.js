@@ -44,6 +44,7 @@ const Menu = styled(NavLink)`
   flex-shrink: 0;
   margin-right: 12px;
   font-size: 13px;
+  font-weight: 500;
   letter-spacing: -0.01em;
 
   &.active {
@@ -64,6 +65,21 @@ const Menu = styled(NavLink)`
       width: 100%;
       height: 2px;
       background-color: ${getColor('yellow')};
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+`
+const MyMenu = styled.div`
+  & > :first-child {
+    margin-right: 24px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    & > :first-child {
+      margin-right: 36px;
     }
   }
 `
@@ -108,20 +124,22 @@ const Navigation = () => {
         <Logo to={'/'}>
           <LogoImageTemplete src={LogoImage} alt="빵빵마켓" />
         </Logo>
-        <Menu to={'/about'}>About</Menu>
+        <Menu to={'/about'}>ABOUT</Menu>
         <Menu to={'/best'}>BEST</Menu>
-        <Menu to={'/chat'}>수다방</Menu>
+        <Menu to={'/chat'}>BOARD</Menu>
         <Menu to={'/event'}>
-          이벤트
+          EVENT
           <PointDot />
           <PointDotBackground />
         </Menu>
-        <Menu to={'/cart'}>
-          <FontAwesomeIcon icon={faCartShopping} aria-label="장바구니" />
-        </Menu>
-        <Menu to={'/favorite'}>
-          <FontAwesomeIcon icon={faHeart} aria-label="찜 목록" />
-        </Menu>
+        <MyMenu>
+          <Menu to={'/cart'}>
+            <FontAwesomeIcon icon={faCartShopping} aria-label="장바구니" />
+          </Menu>
+          <Menu to={'/favorite'}>
+            <FontAwesomeIcon icon={faHeart} aria-label="찜 목록" />
+          </Menu>
+        </MyMenu>
       </MenuContainer>
     </NavContainer>
   )
