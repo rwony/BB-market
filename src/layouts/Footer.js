@@ -41,7 +41,7 @@ const FooterDiv = styled.footer`
 
   @media screen and (min-width: 768px) {
     margin-bottom: 0;
-    padding: 24px calc(100% - 700px);
+    padding: 24px 44px;
 
     ul {
       li {
@@ -54,8 +54,6 @@ const FooterDiv = styled.footer`
   }
 
   @media screen and (min-width: 1024px) {
-    padding: 24px calc(100% - 1500px);
-
     h4 {
       font-size: 16px;
     }
