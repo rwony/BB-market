@@ -64,6 +64,8 @@ export const getColor = (color) => {
 export const colorConditions = {
   discount: (props) =>
     props.discount && { color: getColor('yellow'), fontWeight: 'bold' },
+  price: (props) =>
+    props.price && { color: getColor('dark'), fontWeight: 'bold' },
   featured: (props) =>
     props.featured && { color: getColor('blue'), fontWeight: 'normal' },
   highlighted: (props) =>
