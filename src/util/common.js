@@ -46,8 +46,30 @@ export const getColor = (color) => {
     case 'background-dark':
       return '#2f3438'
       break
+    case 'orange-red':
+      return '#FF4500'
+      break
+    case 'red':
+      return '#B22222'
+      break
+    case 'orange':
+      return '#FF8C00'
+      break
 
     default:
       break
   }
+}
+
+export const colorConditions = {
+  discount: (props) =>
+    props.discount && { color: getColor('yellow'), fontWeight: 'bold' },
+  featured: (props) =>
+    props.featured && { color: getColor('blue'), fontWeight: 'normal' },
+  highlighted: (props) =>
+    props.highlighted && { color: getColor('yellow'), fontWeight: 'bold' },
+  error: (props) =>
+    props.error && { color: getColor('red'), fontWeight: 'bold' },
+  disabled: (props) =>
+    props.disabled && { color: getColor('gray'), fontWeight: 'normal' },
 }
