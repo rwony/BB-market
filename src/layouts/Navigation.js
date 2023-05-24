@@ -73,8 +73,10 @@ const Menu = styled(NavLink)`
   }
 `
 const MyMenu = styled.div`
+  margin-top: -4px;
+
   & > :first-child {
-    margin-right: 24px;
+    margin-right: 16px;
   }
 
   @media screen and (min-width: 1024px) {
